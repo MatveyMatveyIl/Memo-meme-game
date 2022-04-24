@@ -1,0 +1,53 @@
+.field{
+    position: fixed;
+    width: 45vw;
+    height: 45vw;
+    left: 27%;
+    top: 10%;
+    margin: auto;
+    border: black 2px dotted;
+}
+
+.closedCard{
+    position: absolute;
+    width: 9vw;
+    height: 9vw;
+    border: black 2px solid;
+    visibility: visible;
+}
+
+.openCard{
+    position: absolute;
+    width: 9vw;
+    height: 9vw;
+    border: black 2px solid;
+    visibility: hidden;
+}
+
+#closedCard1, #openedCard1, #closedCard2, #openedCard2, #closedCard3, #openedCard3, #closedCard4, #openedCard4{
+    top: 10%;
+}
+
+#closedCard5, #openedCard5, #closedCard6, #openedCard6, #closedCard7, #openedCard7, #closedCard8, #openedCard8{
+    top: 40%;
+}
+
+#closedCard9, #openedCard9, #closedCard10, #openedCard10, #closedCard11, #openedCard11, #closedCard12, #openedCard12{
+    top: 70%;
+}
+
+#closedCard1, #openedCard1, #closedCard5, #openedCard5, #closedCard9, #openedCard9{
+    left: 5%;
+}
+
+#closedCard2, #openedCard2, #closedCard6, #openedCard6, #closedCard10, #openedCard10{
+    left: 28%;
+}
+
+#closedCard3, #openedCard3, #closedCard7, #openedCard7, #closedCard11, #openedCard11{
+    right: 28%;
+}
+
+#closedCard4, #openedCard4, #closedCard8, #openedCard8, #closedCard12, #openedCard12{
+    right: 5%;
+}
