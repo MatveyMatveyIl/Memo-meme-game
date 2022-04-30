@@ -5,6 +5,7 @@ cards.forEach(card => {
 });
 
 function flipCard() {
+    if(this.classList.contains('flipped')) return;
     ++countFlippedCards;
     if (countFlippedCards <= 2) {
         this.classList.add('flipped');
@@ -12,8 +13,11 @@ function flipCard() {
 
     if (countFlippedCards === 2) {
         const flippedCards = document.querySelectorAll('.flipped:not(.checked)');
-        flippedCards[0].classList.add('checked');
-        flippedCards[1].classList.add('checked');
+        if (flippedCards[0].children[0].src === flippedCards[1].children[0].src) {
+            console.log(1)
+            flippedCards[0].classList.add('checked');
+            flippedCards[1].classList.add('checked');
+        }
 
         setTimeout(() => flipCardsBack(), 1000);
     }
