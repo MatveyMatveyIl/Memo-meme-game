@@ -1,5 +1,6 @@
 let countFlippedCards = 0;
 const cards = document.querySelectorAll('.memory-card');
+document.querySelector('#start-game').addEventListener('click', startGame);
 cards.forEach(card => {
     card.addEventListener('click', flipCard)
 });
@@ -30,4 +31,9 @@ function flipCardsBack() {
     for (let card of flippedCards) {
         card.classList.remove('flipped');
     }
+}
+
+function startGame() {
+    cards.forEach(card => card.classList.add('flipped'));
+    setTimeout(() =>cards.forEach(card => card.classList.remove('flipped')), 1500);
 }
