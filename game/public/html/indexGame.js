@@ -1,16 +1,16 @@
 let countFlippedCards = 0;
 const cards = document.querySelectorAll('.memory-card');
-cards.forEach(card => card.addEventListener('click', flipCard));
+cards.forEach(card => {
+    card.addEventListener('click', flipCard)
+});
 
 function flipCard() {
     ++countFlippedCards;
-    if(countFlippedCards <= 2)
-    {
+    if (countFlippedCards <= 2) {
         this.classList.add('flipped');
     }
 
-    if(countFlippedCards === 2)
-    {
+    if (countFlippedCards === 2) {
         const flippedCards = document.querySelectorAll('.flipped:not(.checked)');
         flippedCards[0].classList.add('checked');
         flippedCards[1].classList.add('checked');
@@ -23,7 +23,7 @@ function flipCard() {
 function flipCardsBack() {
     countFlippedCards = 0;
     const flippedCards = document.querySelectorAll('.memory-card:not(.checked)');
-    for(let card of flippedCards){
+    for (let card of flippedCards) {
         card.classList.remove('flipped');
     }
 }
