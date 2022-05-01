@@ -9,11 +9,6 @@ const gameState = {
     isStarted: false,
 }
 
-function generateField() {
-    let fs = require('fs');
-    let files = fs.readdir
-
-}
 
 function startGame() {
     if(!gameState.isStarted) {
