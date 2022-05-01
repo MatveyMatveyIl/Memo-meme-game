@@ -49,7 +49,7 @@ button {
     background: #1a90ef;
     width: 100%;
     height: 100%;
-    /*transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);*/
+    transition: transform .6s linear;
     backface-visibility: hidden;
 }
 
