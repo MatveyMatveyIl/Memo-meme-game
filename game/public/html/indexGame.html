@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Memo Meme</title>
     <link rel="stylesheet" href="indexGame.css">
 </head>
 <body>
@@ -10,8 +10,12 @@
     <div class="gameProgress">
         <button id="startGameButton">Начать игру</button>
         <div class="stats">
-            <div class="score" id="score">0</div>
-            <div class="timer">Время: 0 секунд</div>
+            <div class="score">
+                <label>Очки: </label><label id="scoreValue">0</label>
+            </div>
+            <div class="timer">
+                <label>Время: </label><label id="timeLeft">0</label>
+            </div>
         </div>
     </div>
     <div class="board">

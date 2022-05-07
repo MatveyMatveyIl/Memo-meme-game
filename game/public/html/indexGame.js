@@ -4,18 +4,37 @@ cards.forEach(card => {
     card.addEventListener('click', flipCard)
 });
 
+
+let timer;
+let timeLeft = 30; // seconds
+
+function gameOver() {
+    clearInterval(timer);
+    alert('you lost!');
+}
+
+function updateTimer() {
+    timeLeft = timeLeft - 1;
+    if (timeLeft >= 0)
+        document.getElementById("timeLeft").innerHTML = timeLeft;
+    else {
+        gameOver();
+    }
+}
+
 const gameState = {
     countFlippedCards: 0,
     score: 0,
-    isStarted: false,
+    isStarted: false
 }
 
 function startGame() {
     if(!gameState.isStarted) {
         gameState.countFlippedCards = 0;
         gameState.isStarted = true;
-        cards.forEach(card => card.classList.add('flipped'));
+        cards.forEach(card => card.classList.add('flipped'))
         setTimeout(() => cards.forEach(card => card.classList.remove('flipped')), 1500);
+        timer = setInterval(updateTimer, 1500);
     }
 }
 
@@ -33,7 +52,7 @@ function flipCard() {
             flippedCards[0].classList.add('checked');
             flippedCards[1].classList.add('checked');
             gameState.score += 1;
-            document.getElementById("score").innerHTML = gameState.score;
+            document.getElementById("scoreValue").innerHTML = gameState.score;
         }
 
         setTimeout(() => flipCardsBack(), 1000);
