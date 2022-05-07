@@ -5,7 +5,7 @@ cards.forEach(card => {
 });
 
 let timer;
-let timeLeft = 5;
+let timeLeft = 30;
 const gameState = {
     countFlippedCards: 0,
     score: 0,
