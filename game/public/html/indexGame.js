@@ -1,16 +1,29 @@
 const cards = document.querySelectorAll('.memoryCard');
-document.querySelector('#startGameButton').addEventListener('click', startGame);
+// document.querySelector('#startGameButton').addEventListener('click', startGame);
 cards.forEach(card => {
     card.addEventListener('click', flipCard)
 });
 
-
 let timer;
-let timeLeft = 30; // seconds
+let timeLeft = 5;
+const gameState = {
+    countFlippedCards: 0,
+    score: 0,
+    isStarted: false
+}
+
+window.onload = function () {
+    gameState.isStarted = true;
+    gameState.countFlippedCards = 0;
+    gameState.score = 0;
+    cards.forEach(card => card.classList.add('flipped'))
+    setTimeout(() => cards.forEach(card => card.classList.remove('flipped')), 1500);
+    timer = setInterval(updateTimer, 1500);
+}
 
 function gameOver() {
     clearInterval(timer);
-    alert('you lost!');
+    window.location.href = "loseGame.html";
 }
 
 function updateTimer() {
@@ -19,22 +32,6 @@ function updateTimer() {
         document.getElementById("timeLeft").innerHTML = timeLeft;
     else {
         gameOver();
-    }
-}
-
-const gameState = {
-    countFlippedCards: 0,
-    score: 0,
-    isStarted: false
-}
-
-function startGame() {
-    if(!gameState.isStarted) {
-        gameState.countFlippedCards = 0;
-        gameState.isStarted = true;
-        cards.forEach(card => card.classList.add('flipped'))
-        setTimeout(() => cards.forEach(card => card.classList.remove('flipped')), 1500);
-        timer = setInterval(updateTimer, 1500);
     }
 }
 
@@ -71,9 +68,6 @@ function flipCardsBack() {
 function defineWin() {
     const countFlippedCards = document.querySelectorAll('.memoryCard:not(.checked)').length;
     if(!countFlippedCards) {
-        gameState.countFlippedCards = 0;
-        gameState.isStarted = false;
-        alert('you win!');
-        setTimeout(() => cards.forEach(card => card.classList.remove('flipped')), 1500);
+        setTimeout(() => window.location.href = "finishGame.html", 500);
     }
 }
