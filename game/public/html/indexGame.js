@@ -1,14 +1,14 @@
-const cards = document.querySelectorAll('.memory-card');
-document.querySelector('#start-game').addEventListener('click', startGame);
+const cards = document.querySelectorAll('.memoryCard');
+document.querySelector('#startGameButton').addEventListener('click', startGame);
 cards.forEach(card => {
     card.addEventListener('click', flipCard)
 });
 
 const gameState = {
     countFlippedCards: 0,
+    score: 0,
     isStarted: false,
 }
-
 
 function startGame() {
     if(!gameState.isStarted) {
@@ -32,6 +32,8 @@ function flipCard() {
         if (flippedCards[0].children[0].src === flippedCards[1].children[0].src) {
             flippedCards[0].classList.add('checked');
             flippedCards[1].classList.add('checked');
+            gameState.score += 1;
+            document.getElementById("score").innerHTML = gameState.score;
         }
 
         setTimeout(() => flipCardsBack(), 1000);
@@ -41,14 +43,14 @@ function flipCard() {
 
 function flipCardsBack() {
     gameState.countFlippedCards = 0;
-    const flippedCards = document.querySelectorAll('.memory-card:not(.checked)');
+    const flippedCards = document.querySelectorAll('.memoryCard:not(.checked)');
     for (let card of flippedCards) {
         card.classList.remove('flipped');
     }
 }
 
 function defineWin() {
-    const countFlippedCards = document.querySelectorAll('.memory-card:not(.checked)').length;
+    const countFlippedCards = document.querySelectorAll('.memoryCard:not(.checked)').length;
     if(!countFlippedCards) {
         gameState.countFlippedCards = 0;
         gameState.isStarted = false;
