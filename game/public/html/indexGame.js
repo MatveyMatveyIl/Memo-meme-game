@@ -1,16 +1,18 @@
 const cards = document.querySelectorAll('.memoryCard');
-// document.querySelector('#startGameButton').addEventListener('click', startGame);
-cards.forEach(card => {
-    card.addEventListener('click', flipCard)
-});
-
-let timer;
-let timeLeft = 30;
 const gameState = {
     countFlippedCards: 0,
     score: 0,
     isStarted: false
 }
+const controls = {
+    flipKeyCode: 32,
+    upKeyCode: 1,
+    downKeyCode: 2,
+    leftKeyCode: 3,
+    rightKeyCode: 4
+}
+let timer;
+let timeLeft = 30;
 
 window.onload = function () {
     gameState.isStarted = true;
@@ -35,21 +37,33 @@ function updateTimer() {
     }
 }
 
-function flipCard() {
-    if(!gameState.isStarted) return;
-    if(this.classList.contains('flipped')) return;
+function updateScore() {
+    gameState.score += 1;
+    document.getElementById("scoreValue").innerHTML = gameState.score;
+}
+
+function updateFlipped() {
     ++gameState.countFlippedCards;
     if (gameState.countFlippedCards <= 2) {
         this.classList.add('flipped');
     }
+}
 
+function checkForFlip (e) {
+    return  e.keyCode !== controls.flipKeyCode && e.type !== 'click' ||
+        !gameState.isStarted ||
+        this.classList.contains('flipped');
+}
+
+function flipCard(e) {
+    if (checkForFlip.call(this, e)) return;
+    updateFlipped.call(this);
     if (gameState.countFlippedCards === 2) {
         const flippedCards = document.querySelectorAll('.flipped:not(.checked)');
         if (flippedCards[0].children[0].src === flippedCards[1].children[0].src) {
             flippedCards[0].classList.add('checked');
             flippedCards[1].classList.add('checked');
-            gameState.score += 1;
-            document.getElementById("scoreValue").innerHTML = gameState.score;
+            updateScore();
         }
 
         setTimeout(() => flipCardsBack(), 1000);
@@ -71,3 +85,12 @@ function defineWin() {
         setTimeout(() => window.location.href = "finishGame.html", 500);
     }
 }
+
+function addEventHandlers() {
+    cards.forEach(card => {
+        card.addEventListener('click', flipCard)
+        card.addEventListener('keydown', flipCard)
+    });
+}
+
+addEventHandlers();
