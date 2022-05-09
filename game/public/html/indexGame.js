@@ -4,6 +4,7 @@ const gameState = {
     score: 0,
     isStarted: false
 }
+
 const controls = {
     flipKeyCode: 32,
     upKeyCode: 1,
