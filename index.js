@@ -18,5 +18,12 @@ app.get('/game', (req, res) => {
     res.render('indexGame')
 })
 
+app.get('/gameover', (req, res) => {
+    res.render('loseGame')
+})
+
+app.get('/win', (req, res) => {
+    res.render('finishGame')
+})
 
 app.listen(PORT);

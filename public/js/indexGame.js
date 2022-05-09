@@ -26,7 +26,7 @@ window.onload = function () {
 
 function gameOver() {
     clearInterval(timer);
-    window.location.href = "loseGame.ejs";
+    window.location.href = "/gameover";
 }
 
 function updateTimer() {
@@ -83,7 +83,7 @@ function flipCardsBack() {
 function defineWin() {
     const countFlippedCards = document.querySelectorAll('.memoryCard:not(.checked)').length;
     if(!countFlippedCards) {
-        setTimeout(() => window.location.href = "finishGame.ejs", 500);
+        setTimeout(() => window.location.href = "/win", 500);
     }
 }
 
