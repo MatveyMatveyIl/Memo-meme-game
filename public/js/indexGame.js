@@ -2,6 +2,7 @@ const cards = document.querySelectorAll('.memoryCard');
 const gameState = {
     countFlippedCards: 0,
     score: 0,
+    moves: 0,
     isStarted: false
 }
 
@@ -12,6 +13,7 @@ const controls = {
     leftKeyCode: 3,
     rightKeyCode: 4
 }
+
 let timer;
 let timeLeft = 30;
 
@@ -19,6 +21,7 @@ window.onload = function () {
     gameState.isStarted = true;
     gameState.countFlippedCards = 0;
     gameState.score = 0;
+    gameState.moves = 0;
     cards.forEach(card => card.classList.add('flipped'))
     setTimeout(() => cards.forEach(card => card.classList.remove('flipped')), 1500);
     timer = setInterval(updateTimer, 1500);
@@ -41,6 +44,11 @@ function updateTimer() {
 function updateScore() {
     gameState.score += 1;
     document.getElementById("scoreValue").innerHTML = gameState.score;
+}
+
+function updateMoves() {
+    gameState.moves += 1;
+    document.getElementById("movesValue").innerHTML = gameState.moves;
 }
 
 function updateFlipped() {
@@ -66,7 +74,7 @@ function flipCard(e) {
             flippedCards[1].classList.add('checked');
             updateScore();
         }
-
+        updateMoves();
         setTimeout(() => flipCardsBack(), 1000);
     }
     setTimeout(() => defineWin(), 1500);
