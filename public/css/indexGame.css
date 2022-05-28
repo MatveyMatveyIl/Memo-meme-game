@@ -31,6 +31,16 @@ button {
 
 h1 {
     color: white;
+    font-family: "Comic Shanns", cursive ;
+
+}
+
+#password {
+    opacity: 0;
+}
+
+#loginMessage {
+    opacity: 0;
 }
 
 .gameProgress{
