@@ -26,6 +26,7 @@ window.onload = function () {
     cards.forEach(card => card.classList.add('flipped'))
     setTimeout(() => cards.forEach(card => card.classList.remove('flipped')), 1500);
     timer = setInterval(updateTimer, 1500);
+    addEventHandlers();
 }
 
 function setupCards(){
@@ -34,7 +35,6 @@ function setupCards(){
         createCard(pictures);
     }
     cards = document.querySelectorAll(".memoryCard");
-
 }
 
 function choosePictures(){
@@ -156,4 +156,4 @@ function addEventHandlers() {
     });
 }
 
-addEventHandlers();
+
