@@ -1,4 +1,8 @@
 let cards;
+
+const cardsAmount = 12;
+const picturesAmount = 8;
+
 const gameState = {
     countFlippedCards: 0,
     score: 0,
@@ -31,16 +35,16 @@ window.onload = function () {
 
 function setupCards(){
     let pictures = getFilesNames(choosePictures());
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < cardsAmount; i++) {
         createCard(pictures);
     }
     cards = document.querySelectorAll(".memoryCard");
 }
 
 function choosePictures(){
-    let pictures = Array(7).fill().map((x,i)=>i);
+    let pictures = Array(picturesAmount).fill().map((x,i)=>i);
     let takenPictures = []
-    for (let i = 0; i < 6; i++){
+    for (let i = 0; i < cardsAmount / 2; i++){
         let pictureIndex = Math.floor(Math.random() * pictures.length);
         takenPictures.push(pictures[pictureIndex] + 1);
         pictures.splice(pictureIndex, 1);

@@ -13,6 +13,14 @@ app.get('/', (req, res) => {
     res.render('gameStart');
 });
 
+app.get('/mode', (req, res) => {
+    res.render('modeChoice');
+});
+
+app.get('/upload', (req, res) => {
+    res.render('uploadingCards');
+});
+
 app.get('/game', (req, res) => {
     res.render('indexGame');
 });
