@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.static('public'));
 app.use('/css', express.static(__dirname + 'public/css'));

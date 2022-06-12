@@ -2,7 +2,7 @@ let cards;
 
 const cardsAmount = 12;
 const picturesAmount = 8;
-
+// localStorage.clear();
 const gameState = {
     countFlippedCards: 0,
     score: 0,
@@ -33,18 +33,18 @@ window.onload = function () {
     addEventHandlers();
 }
 
-function setupCards(){
+function setupCards() {
     let pictures = getFilesNames(choosePictures());
     for (let i = 0; i < cardsAmount; i++) {
-        createCard(pictures);
+        createCard(pictures, i);
     }
     cards = document.querySelectorAll(".memoryCard");
 }
 
-function choosePictures(){
-    let pictures = Array(picturesAmount).fill().map((x,i)=>i);
+function choosePictures() {
+    let pictures = Array(picturesAmount).fill().map((x, i) => i);
     let takenPictures = []
-    for (let i = 0; i < cardsAmount / 2; i++){
+    for (let i = 0; i < cardsAmount / 2; i++) {
         let pictureIndex = Math.floor(Math.random() * pictures.length);
         takenPictures.push(pictures[pictureIndex] + 1);
         pictures.splice(pictureIndex, 1);
@@ -52,9 +52,9 @@ function choosePictures(){
     return takenPictures;
 }
 
-function getFilesNames(pictures){
+function getFilesNames(pictures) {
     let files = [];
-    for (let picture of pictures){
+    for (let picture of pictures) {
         let fileName = 'images/open' + picture + '.jpg';
         files.push(fileName);
         files.push(fileName);
@@ -62,14 +62,14 @@ function getFilesNames(pictures){
     return files;
 }
 
-function createCard(pictures){
+function createCard(pictures, index) {
     let card = document.createElement("div");
     card.className = "memoryCard";
     card.tabIndex = "0";
     let openCard = document.createElement("img");
     openCard.className = "openedCardImg";
     openCard.alt = "open";
-    setSrc(openCard, pictures)
+    setSrc(openCard, pictures, index)
     let closedCard = document.createElement("img");
     closedCard.className = "closedCardImg";
     closedCard.alt = "closed";
@@ -79,10 +79,14 @@ function createCard(pictures){
     document.querySelector(".board").appendChild(card);
 }
 
-function setSrc(card, pictures){
+function setSrc(card, pictures, index) {
+    // if (localStorage.getItem(`im${index}`) !== null) {
+    //     card.src = localStorage.getItem(`im${index}`);
+    // } else {
     let pictureIndex = Math.floor(Math.random() * pictures.length);
     card.src = pictures[pictureIndex];
     pictures.splice(pictureIndex, 1);
+    // }
 }
 
 function gameOver() {
@@ -116,8 +120,8 @@ function updateFlipped() {
     }
 }
 
-function checkForFlip (e) {
-    return  e.keyCode !== controls.flipKeyCode && e.type !== 'click' ||
+function checkForFlip(e) {
+    return e.keyCode !== controls.flipKeyCode && e.type !== 'click' ||
         !gameState.isStarted ||
         this.classList.contains('flipped');
 }
@@ -148,7 +152,7 @@ function flipCardsBack() {
 
 function defineWin() {
     const countFlippedCards = document.querySelectorAll('.memoryCard:not(.checked)').length;
-    if(!countFlippedCards) {
+    if (!countFlippedCards) {
         setTimeout(() => window.location.href = "/win", 500);
     }
 }
