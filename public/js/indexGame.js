@@ -2,7 +2,6 @@ let cards;
 
 const cardsAmount = localStorage.getItem('cardsCount');
 const picturesAmount = 8;
-// localStorage.clear();
 const gameState = {
     countFlippedCards: 0,
     score: 0,
@@ -80,13 +79,13 @@ function createCard(pictures, index) {
 }
 
 function setSrc(card, pictures, index) {
-    // if (localStorage.getItem(`im${index}`) !== null) {
-    //     card.src = localStorage.getItem(`im${index}`);
-    // } else {
-    let pictureIndex = Math.floor(Math.random() * pictures.length);
-    card.src = pictures[pictureIndex];
-    pictures.splice(pictureIndex, 1);
-    // }
+    if (localStorage.getItem(`im${index}`) !== null) {
+        card.src = localStorage.getItem(`im${index}`);
+    } else {
+        let pictureIndex = Math.floor(Math.random() * pictures.length);
+        card.src = pictures[pictureIndex];
+        pictures.splice(pictureIndex, 1);
+    }
 }
 
 function gameOver() {

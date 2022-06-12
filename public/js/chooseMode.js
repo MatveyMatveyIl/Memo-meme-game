@@ -3,6 +3,9 @@ document.querySelector('input').addEventListener('change', function () {
 });
 
 document.querySelector('#defaultModeButton').addEventListener("click", () => {
+    const cardsCount = localStorage.getItem('cardsCount');
+    localStorage.clear();
+    localStorage.setItem('cardsCount', cardsCount);
     window.location.href = '/game';
 });
 document.querySelector('#customModeButton').addEventListener("click", () => {
