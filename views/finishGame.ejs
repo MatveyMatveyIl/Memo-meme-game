@@ -7,10 +7,23 @@
 </head>
 <body>
 <div class="menu">
-    <h1 id="finishLabel">Вы выиграли!</h1>
-    <script>document.getElementById('finishLabel').innerHTML = document.cookie.split("=")[1] + ', ' + 'Вы выиграли!'</script>
-    <h1 id="finishScore"></h1>
-        <script>document.getElementById('finishScore').innerHTML = 'Очки: ' + localStorage.getItem('score')</script>
+    <h1>Победа! :)</h1>
+    <div id="finishData">
+        <label id="finishLabel"></label><br>
+        <script>document.getElementById('finishLabel').innerHTML = document.cookie.split("=")[1] + ', вы прошли игру'</script>
+        <label>за </label><label id="finishMoves"></label><label id="moves"> ходов</label><br>
+        <script>const moves = localStorage.getItem('moves');
+            document.getElementById('finishMoves').innerHTML = moves;
+            if (moves % 10 === 1){
+                document.getElementById('moves').innerHTML = 'ход';
+            } else if (moves % 10 === 2 || moves % 10 === 3 || moves % 10 === 4){
+                document.getElementById('moves').innerHTML = 'хода';
+            } else {
+                document.getElementById('moves').innerHTML = 'ходов';
+            }</script>
+        <label>со счётом </label><label id="finishScore"></label><label> очков</label>
+        <script>document.getElementById('finishScore').innerHTML = localStorage.getItem('score')</script>
+    </div>
     <button id="gameStartButton">Начать заново</button>
 </div>
 <script src="js/restartGame.js"></script>

@@ -1,7 +1,7 @@
 const users = [];
 
 const loginForm = document.querySelector('#loginForm');
-const loginMessage = document.querySelector('#loginMessage');
+const errorMessage = document.querySelector('#errorMessage');
 
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -10,7 +10,7 @@ loginForm.addEventListener("submit", (e) => {
 
 function login(username) {
     if (username === ''){
-        loginMessage.style.opacity = '1';
+        errorMessage.style.opacity = '1';
     }
     else{
         let user = {

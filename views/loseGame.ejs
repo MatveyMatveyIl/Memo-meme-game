@@ -7,10 +7,16 @@
 </head>
 <body>
 <div class="menu">
-    <h1 id="finishLabel">Время вышло :(</h1>
-    <script>document.getElementById('finishLabel').innerHTML = document.cookie.split("=")[1] + ', ' + 'Время вышло :('</script>
-    <h1 id="finishScore"></h1>
-    <script>document.getElementById('finishScore').innerHTML = 'Очки: ' + localStorage.getItem('score')</script>
+    <h1>Время вышло :(</h1>
+    <div id="finishData">
+        <label id="finishLabel"></label><br>
+        <script>document.getElementById('finishLabel').innerHTML = 'Но не расстраивайтесь, ' + document.cookie.split("=")[1] + '!'</script>
+        <label>Вы сделали </label><label id="finishScore"></label><label> ходов</label><br>
+        <script>document.getElementById('finishScore').innerHTML = localStorage.getItem('moves')</script>
+        <label>И получили </label><label id="finishMoves"></label><label> очков</label>
+        <script>document.getElementById('finishMoves').innerHTML = localStorage.getItem('score')</script>
+    </div>
+
     <button id="gameStartButton">Начать заново</button>
 </div>
 <script src="/js/restartGame.js"></script>

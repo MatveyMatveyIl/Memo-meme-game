@@ -24,15 +24,22 @@ let timeLeft = cardsAmount * 4;
 
 window.onload = function () {
     setupCards();
-    gameState.isStarted = true;
+    clearGameState();
+    flipCards();
+    document.getElementById("scoreValue").innerHTML = gameState.score;
+}
+
+function clearGameState() {
     gameState.countFlippedCards = 0;
     gameState.score = cardsAmount * 100 * 2;
     gameState.moves = 0;
+    gameState.isStarted = true;
+}
+
+function flipCards(){
     cards.forEach(card => card.classList.add('flipped'))
     setTimeout(() => cards.forEach(card => card.classList.remove('flipped')), 3000);
     timer = setInterval(updateTimer, 1500);
-    document.getElementById("scoreValue").innerHTML = gameState.score;
-    addEventHandlers();
 }
 
 function setupCards() {
@@ -41,6 +48,7 @@ function setupCards() {
         createCard(pictures, i);
     }
     cards = document.querySelectorAll(".memoryCard");
+    addEventHandlers();
 }
 
 function choosePictures() {
@@ -75,21 +83,27 @@ function createCard(pictures, index) {
     let card = document.createElement("div");
     card.className = "memoryCard";
     card.tabIndex = "0";
-    let openCard = document.createElement("img");
-    openCard.className = "openedCardImg";
-    openCard.alt = "open";
-    openCard.src = pictures[index];
-    let closedCard = document.createElement("img");
-    closedCard.className = "closedCardImg";
-    closedCard.alt = "closed";
-    closedCard.src = "images/closed.jpg"
+
+    let openCard = setCardImage("openedCardImg", "open", pictures[index]);
+    let closedCard = setCardImage("closedCardImg", "closed", "images/closed.jpg");
+
     card.appendChild(openCard);
     card.appendChild(closedCard);
     document.querySelector(".board").appendChild(card);
 }
 
+function setCardImage(className, alt, src){
+    let cardImg = document.createElement("img");
+    cardImg.className = className;
+    cardImg.alt = alt;
+    cardImg.src = src;
+    return cardImg;
+}
+
 function gameOver() {
     clearInterval(timer);
+    localStorage.setItem('score', gameState.score);
+    localStorage.setItem('moves', gameState.moves);
     window.location.href = "/gameover";
 }
 
@@ -156,6 +170,8 @@ function flipCardsBack() {
 function defineWin() {
     const countFlippedCards = document.querySelectorAll('.memoryCard:not(.checked)').length;
     if (!countFlippedCards) {
+        localStorage.setItem('score', gameState.score);
+        localStorage.setItem('moves', gameState.moves);
         setTimeout(() => window.location.href = "/win", 500);
     }
 }

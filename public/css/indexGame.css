@@ -2,19 +2,47 @@
     box-sizing: border-box;
 }
 
-body {
-    width: 100%;
+html {
     height: 100%;
-    background: #2f2f32;
 }
-
-.menu{
-    position: absolute;
-    left: 42%;
-    bottom: 50%;
+body {
+    width: 99%;
+    height: 99%;
+    background: #2f2f32;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Comic Shanns", cursive;
+}
+
+.menu h1, .menu p, .menu label {
+    color: white;
+    font-family: "Comic Shanns", cursive;
+}
+
+.menu h1 {
+    font-size: 70px;
+}
+
+.menu p, .menu label {
+    font-size: 21px;
+}
+
+.menu label {
+    margin: 10px;
+}
+.menu #errorMessage {
+    opacity: 0;
+    background: crimson;
+    width: 410px;
+    text-align: center;
 }
 
 button {
@@ -23,71 +51,55 @@ button {
     border-radius: 5px;
     border-color: white;
     border-width: 0;
-    padding: 5px;
+    padding: 7px;
     cursor: pointer;
-    width: 150px;
+    width: 300px;
     font-family: "Comic Shanns", cursive;
-    font-size: medium;
-    margin: 5px;
+    font-size: 20px;
+    margin: 25px;
 }
 
-h1, label {
-    color: white;
-    font-family: "Comic Shanns", cursive;
+#defaultModeButton, #customModeButton {
+    font-size: 20px;
+    margin: 10px;
 }
 
-label {
-    margin: 5px;
-}
-
-.uploadFiles .form-group{padding:1em;margin:1em}
-.uploadFiles input[type=file]{outline:0;opacity:0;pointer-events:none;user-select:none}
-.uploadFiles .uploadLabel{width:120px;border:2px dashed white;border-radius:5px;display:block;padding:1.2em;transition:border 300ms ease;cursor:pointer;text-align:center}
-.uploadFiles .uploadLabel i{display:block;font-size:42px;padding-bottom:16px}
-.uploadFiles .uploadLabel i,.uploadFiles .uploadLabel .title{color:white;transition:200ms color}
-.uploadFiles .uploadLabel:hover{border:2px solid grey}
-.uploadFiles .uploadLabel:hover i,.uploadFiles .uploadLabel:hover .title{color:grey}
-
-#cardsCount {
-    width: 150px;
-    height: 50px;
-    font-family: "Comic Shanns", cursive;
-    line-height: 1.65;
-    text-align: center;
-    border: none;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
-    font-size: 1rem;
-    border-radius: 5px;
-    margin: 5px;
-}
-
-#cardsCountDiv, #modeDiv {
-    margin: 5px;
+.menu .form{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#loginMessage {
-    opacity: 0;
-    color: white;
-    background: crimson;
-    font-family: "Comic Shanns", cursive;
-    font-size: small;
-}
-
-.formField {
+.menu .formField {
     border-radius: 5px;
     border-width: 0;
     border-color: #2f2f32;
-    padding: 5px;
-    margin: 5px;
+    padding: 7px;
+    margin: 25px;
+    width: 300px;
+    font-size: 20px;
+    font-family: "Comic Shanns", cursive;
+    text-align: center;
+}
+
+.menu #cardsCount {
+    margin: 10px;
+}
+
+.menu #cardsCountDiv, .menu #modeDiv {
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu #finishData{
+    margin: 25px;
+    text-align: center;
+}
+
+#finishScore, #finishMoves {
+    font-weight: bold;
 }
 
 .gameProgress{
@@ -99,23 +111,21 @@ label {
     border: 2px solid white;
     border-radius: 5px;
     color: white;
+    font-size: 20px;
+    font-family: "Comic Shanns", cursive;
 }
 
-.field {
-    position: absolute;
-    right:50%;
-    transform: translate(50%, 2%);
+.gameProgress label {
+    padding: 5px;
 }
 
 .board{
-    position: relative;
     display: grid;
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(4, max-content);
     grid-gap: 20px;
     border: 2px solid white;
     border-radius: 5px;
     padding: 5px;
-    /*background: white;*/
 }
 
 .memoryCard {
@@ -145,3 +155,20 @@ label {
 .memoryCard.flipped .closedCardImg {
     transform: rotateY(180deg);
 }
+
+/*.uploadFiles .form-group{padding:1em;margin:1em}*/
+/*.uploadFiles input[type=file]{outline:0;opacity:0;pointer-events:none;user-select:none}*/
+/*.uploadFiles .uploadLabel{width:120px;border:2px dashed white;border-radius:5px;display:block;padding:1.2em;transition:border 300ms ease;cursor:pointer;text-align:center}*/
+/*.uploadFiles .uploadLabel i{display:block;font-size:42px;padding-bottom:16px}*/
+/*.uploadFiles .uploadLabel i,.uploadFiles .uploadLabel .title{color:white;transition:200ms color}*/
+/*.uploadFiles .uploadLabel:hover{border:2px solid grey}*/
+/*.uploadFiles .uploadLabel:hover i,.uploadFiles .uploadLabel:hover .title{color:grey}*/
+
+.uploadFiles .form-group{padding:1em;margin:1em}
+.uploadFiles input[type=file]{outline:0;opacity:0;pointer-events:none;user-select:none}
+.uploadFiles .label{width:170px; height:170px; border:2px dashed white;border-radius:5px;display:block;padding:1.2em;transition:border 300ms ease;cursor:pointer;text-align:center}
+.uploadFiles .label i{display:block;font-size:42px;padding-bottom:16px}
+.uploadFiles .label i,.example-1 .label .title{color:white;transition:200ms color;}
+.uploadFiles .title {font-family: "Comic Shanns", cursive; font-size: 20px}
+.uploadFiles .label:hover{border:2px solid grey}
+.uploadFiles .label:hover i,.example-1 .label:hover, .title:hover{color:grey}
