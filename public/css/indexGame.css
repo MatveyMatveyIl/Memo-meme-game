@@ -156,14 +156,6 @@ button {
     transform: rotateY(180deg);
 }
 
-/*.uploadFiles .form-group{padding:1em;margin:1em}*/
-/*.uploadFiles input[type=file]{outline:0;opacity:0;pointer-events:none;user-select:none}*/
-/*.uploadFiles .uploadLabel{width:120px;border:2px dashed white;border-radius:5px;display:block;padding:1.2em;transition:border 300ms ease;cursor:pointer;text-align:center}*/
-/*.uploadFiles .uploadLabel i{display:block;font-size:42px;padding-bottom:16px}*/
-/*.uploadFiles .uploadLabel i,.uploadFiles .uploadLabel .title{color:white;transition:200ms color}*/
-/*.uploadFiles .uploadLabel:hover{border:2px solid grey}*/
-/*.uploadFiles .uploadLabel:hover i,.uploadFiles .uploadLabel:hover .title{color:grey}*/
-
 .uploadFiles .form-group{padding:1em;margin:1em}
 .uploadFiles input[type=file]{outline:0;opacity:0;pointer-events:none;user-select:none}
 .uploadFiles .label{width:170px; height:170px; border:2px dashed white;border-radius:5px;display:block;padding:1.2em;transition:border 300ms ease;cursor:pointer;text-align:center}
