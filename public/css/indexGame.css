@@ -31,9 +31,41 @@ button {
     margin: 5px;
 }
 
-h1 {
+h1, label {
     color: white;
     font-family: "Comic Shanns", cursive;
+}
+
+label {
+    margin: 5px;
+}
+
+.uploadFiles .form-group{padding:1em;margin:1em}
+.uploadFiles input[type=file]{outline:0;opacity:0;pointer-events:none;user-select:none}
+.uploadFiles .uploadLabel{width:120px;border:2px dashed white;border-radius:5px;display:block;padding:1.2em;transition:border 300ms ease;cursor:pointer;text-align:center}
+.uploadFiles .uploadLabel i{display:block;font-size:42px;padding-bottom:16px}
+.uploadFiles .uploadLabel i,.uploadFiles .uploadLabel .title{color:white;transition:200ms color}
+.uploadFiles .uploadLabel:hover{border:2px solid grey}
+.uploadFiles .uploadLabel:hover i,.uploadFiles .uploadLabel:hover .title{color:grey}
+
+#cardsCount {
+    width: 150px;
+    height: 50px;
+    font-family: "Comic Shanns", cursive;
+    line-height: 1.65;
+    text-align: center;
+    border: none;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    font-size: 1rem;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+#cardsCountDiv, #modeDiv {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .form{

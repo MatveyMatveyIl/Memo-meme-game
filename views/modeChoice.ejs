@@ -7,10 +7,15 @@
 </head>
 <body>
 <div class="menu">
-    <label for="number">Количество карт (2-16):</label>
-    <input type="number" id="cardsCount" name="cardsCount" min="2" max="16">
-    <button id="defaultModeButton">Базовый набор карт</button>
-    <button id="customModeButton">Создать свою колоду</button>
+    <div id="cardsCountDiv">
+        <label for="number">Выберите количество карт</label>
+        <input type="number" id="cardsCount" name="cardsCount" min="2" max="16" value="12">
+    </div>
+    <div id="modeDiv">
+        <label for="number">Выберите режим игры</label>
+        <button id="defaultModeButton">Базовый набор карт</button>
+        <button id="customModeButton">Создать свою колоду</button>
+    </div>
 </div>
 <script src="js/chooseMode.js"></script>
 </body>
