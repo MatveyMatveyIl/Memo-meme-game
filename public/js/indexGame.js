@@ -108,6 +108,7 @@ function updateScore(guess) {
     gameState.score -= 100;
     if(gameState.score <= 0) gameOver();
     document.getElementById("scoreValue").innerHTML = gameState.score;
+    localStorage.setItem('score', gameState.score)
 }
 
 function updateMoves() {
