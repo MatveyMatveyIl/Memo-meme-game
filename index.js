@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 80;
-
+const PORT = process.env.PORT || 8080;
+console.log('http://127.0.0.1:8080/game');
 app.use(express.static('public'));
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/js', express.static(__dirname + 'public/js'));

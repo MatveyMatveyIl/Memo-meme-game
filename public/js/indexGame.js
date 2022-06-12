@@ -1,6 +1,6 @@
 let cards;
 
-const cardsAmount = 12;
+const cardsAmount = localStorage.getItem('cardsCount');
 const picturesAmount = 8;
 
 const gameState = {
