@@ -4,7 +4,7 @@ const cardsAmount = localStorage.getItem('cardsCount');
 const picturesAmount = 8;
 const gameState = {
     countFlippedCards: 0,
-    score: 0,
+    score: cardsAmount * 100 * 2,
     moves: 0,
     isStarted: false
 }
@@ -18,17 +18,18 @@ const controls = {
 }
 
 let timer;
-let timeLeft = 30;
+let timeLeft = cardsAmount * 4;
 
 window.onload = function () {
     setupCards();
     gameState.isStarted = true;
     gameState.countFlippedCards = 0;
-    gameState.score = 0;
+    gameState.score = cardsAmount * 100 * 2;
     gameState.moves = 0;
     cards.forEach(card => card.classList.add('flipped'))
-    setTimeout(() => cards.forEach(card => card.classList.remove('flipped')), 1500);
+    setTimeout(() => cards.forEach(card => card.classList.remove('flipped')), 3000);
     timer = setInterval(updateTimer, 1500);
+    document.getElementById("scoreValue").innerHTML = gameState.score;
     addEventHandlers();
 }
 
@@ -102,8 +103,10 @@ function updateTimer() {
     }
 }
 
-function updateScore() {
-    gameState.score += 1;
+function updateScore(guess) {
+    if(guess) return;
+    gameState.score -= 100;
+    if(gameState.score <= 0) gameOver();
     document.getElementById("scoreValue").innerHTML = gameState.score;
 }
 
@@ -128,13 +131,15 @@ function checkForFlip(e) {
 function flipCard(e) {
     if (checkForFlip.call(this, e)) return;
     updateFlipped.call(this);
+    let guess = false;
     if (gameState.countFlippedCards === 2) {
         const flippedCards = document.querySelectorAll('.flipped:not(.checked)');
         if (flippedCards[0].children[0].src === flippedCards[1].children[0].src) {
             flippedCards[0].classList.add('checked');
             flippedCards[1].classList.add('checked');
-            updateScore();
+            guess = true;
         }
+        updateScore(guess);
         updateMoves();
         setTimeout(() => flipCardsBack(), 1000);
     }
