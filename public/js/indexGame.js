@@ -104,11 +104,10 @@ function updateTimer() {
 }
 
 function updateScore(guess) {
-    if(guess) return;
-    gameState.score -= 100;
+    if(!guess) gameState.score -= 100;
+    localStorage.setItem('score', gameState.score);
     if(gameState.score <= 0) gameOver();
     document.getElementById("scoreValue").innerHTML = gameState.score;
-    localStorage.setItem('score', gameState.score)
 }
 
 function updateMoves() {
