@@ -10,6 +10,7 @@ document.querySelector("input").addEventListener("change", function () {
             fr.readAsDataURL(this.files[i]);
         }
     }
+    localStorage.setItem('picturesAmount', this.files.length);
 });
 
 

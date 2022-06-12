@@ -1,7 +1,9 @@
 let cards;
 
 const cardsAmount = localStorage.getItem('cardsCount');
-const picturesAmount = 8;
+const defaultPicturesAmount = 8;
+const customPicturesAmount = localStorage.getItem('picturesAmount') === null ? 0 : localStorage.getItem('picturesAmount');
+
 const gameState = {
     countFlippedCards: 0,
     score: cardsAmount * 100 * 2,
@@ -34,7 +36,7 @@ window.onload = function () {
 }
 
 function setupCards() {
-    let pictures = getFilesNames(choosePictures());
+    let pictures = choosePictures();
     for (let i = 0; i < cardsAmount; i++) {
         createCard(pictures, i);
     }
@@ -42,24 +44,31 @@ function setupCards() {
 }
 
 function choosePictures() {
-    let pictures = Array(picturesAmount).fill().map((x, i) => i);
-    let takenPictures = []
-    for (let i = 0; i < cardsAmount / 2; i++) {
-        let pictureIndex = Math.floor(Math.random() * pictures.length);
-        takenPictures.push(pictures[pictureIndex] + 1);
-        pictures.splice(pictureIndex, 1);
+    let customPictures = [];
+    for (let i = 0; i < customPicturesAmount; i++){
+        customPictures.push(localStorage.getItem(`im${i}`));
     }
+
+    let defaultPictures = [];
+    for (let i = 0; i < defaultPicturesAmount; i++){
+        defaultPictures.push(`images/open${i}.jpg`)
+    }
+
+    shuffle(customPictures);
+    shuffle(defaultPictures);
+    let availablePictures = customPictures.concat(defaultPictures);
+    let takenPictures = availablePictures.splice(0, cardsAmount / 2);
+
+    for (let i = 0; i < cardsAmount / 2; i++){
+        takenPictures.push(takenPictures[i]);
+    }
+    shuffle(takenPictures);
+
     return takenPictures;
 }
 
-function getFilesNames(pictures) {
-    let files = [];
-    for (let picture of pictures) {
-        let fileName = 'images/open' + picture + '.jpg';
-        files.push(fileName);
-        files.push(fileName);
-    }
-    return files;
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
 }
 
 function createCard(pictures, index) {
@@ -69,7 +78,7 @@ function createCard(pictures, index) {
     let openCard = document.createElement("img");
     openCard.className = "openedCardImg";
     openCard.alt = "open";
-    setSrc(openCard, pictures, index)
+    openCard.src = pictures[index];
     let closedCard = document.createElement("img");
     closedCard.className = "closedCardImg";
     closedCard.alt = "closed";
@@ -77,16 +86,6 @@ function createCard(pictures, index) {
     card.appendChild(openCard);
     card.appendChild(closedCard);
     document.querySelector(".board").appendChild(card);
-}
-
-function setSrc(card, pictures, index) {
-    if (localStorage.getItem(`im${index}`) !== null) {
-        card.src = localStorage.getItem(`im${index}`);
-    } else {
-        let pictureIndex = Math.floor(Math.random() * pictures.length);
-        card.src = pictures[pictureIndex];
-        pictures.splice(pictureIndex, 1);
-    }
 }
 
 function gameOver() {
