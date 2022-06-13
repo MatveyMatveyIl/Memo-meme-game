@@ -8,6 +8,10 @@ loginForm.addEventListener("submit", (e) => {
     login(loginForm.username.value);
 });
 
+window.onload = function () {
+    localStorage.setItem('cardsCount', 12)
+}
+
 function login(username) {
     if (username === ''){
         errorMessage.style.opacity = '1';
