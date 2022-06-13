@@ -5,7 +5,10 @@ document.querySelector('input').addEventListener('change', function () {
 const errorMessage = document.querySelector('#errorMessage');
 
 document.querySelector('#defaultModeButton').addEventListener("click", () => {
-    const cardsCount = localStorage.getItem('cardsCount');
+    let cardsCount = localStorage.getItem('cardsCount');
+    if (cardsCount === null){
+        cardsCount = 12;
+    }
     if (cardsCount % 2 === 0){
         updateCardsCount(cardsCount);
         window.location.href = '/game';
@@ -14,7 +17,10 @@ document.querySelector('#defaultModeButton').addEventListener("click", () => {
     }
 });
 document.querySelector('#customModeButton').addEventListener("click", () => {
-    const cardsCount = localStorage.getItem('cardsCount');
+    let cardsCount = localStorage.getItem('cardsCount');
+    if (cardsCount === null){
+        cardsCount = 12;
+    }
     if (cardsCount % 2 === 0){
         updateCardsCount(cardsCount);
         window.location.href = '/upload'
