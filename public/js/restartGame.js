@@ -5,6 +5,7 @@ document.querySelector("#gameStartButton").addEventListener("click", () => {
 });
 
 document.querySelector("#toChooseModeButton").addEventListener("click", () => {
+    updateCardsCount(12);
     window.location.href = '/mode';
 })
 

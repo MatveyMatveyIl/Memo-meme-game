@@ -113,6 +113,7 @@ button {
     color: white;
     font-size: 20px;
     font-family: "Comic Shanns", cursive;
+    width: 514px;
 }
 
 .gameProgress label {

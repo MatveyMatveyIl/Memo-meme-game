@@ -49,6 +49,10 @@ function setupCards() {
     }
     cards = document.querySelectorAll(".memoryCard");
     addEventHandlers();
+    if (cardsAmount == 2){
+        alert()
+        document.querySelector(".board").style.gridTemplateColumns = 'repeat(2, max-content)';
+    }
 }
 
 function choosePictures() {
