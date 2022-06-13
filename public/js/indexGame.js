@@ -24,6 +24,7 @@ let timeLeft = cardsAmount * 4;
 
 window.onload = function () {
     setupCards();
+    setupLayout();
     clearGameState();
     flipCards();
     document.getElementById("scoreValue").innerHTML = gameState.score;
@@ -49,8 +50,10 @@ function setupCards() {
     }
     cards = document.querySelectorAll(".memoryCard");
     addEventHandlers();
-    if (cardsAmount == 2){
-        alert()
+}
+
+function setupLayout() {
+    if (cardsAmount % 4 !== 0){
         document.querySelector(".board").style.gridTemplateColumns = 'repeat(2, max-content)';
     }
 }
