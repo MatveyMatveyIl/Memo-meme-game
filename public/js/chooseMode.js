@@ -7,8 +7,7 @@ const errorMessage = document.querySelector('#errorMessage');
 document.querySelector('#defaultModeButton').addEventListener("click", () => {
     const cardsCount = localStorage.getItem('cardsCount');
     if (cardsCount % 2 === 0){
-        localStorage.clear();
-        localStorage.setItem('cardsCount', cardsCount);
+        updateCardsCount(cardsCount);
         window.location.href = '/game';
     } else{
         errorMessage.style.opacity = '1';
@@ -17,8 +16,14 @@ document.querySelector('#defaultModeButton').addEventListener("click", () => {
 document.querySelector('#customModeButton').addEventListener("click", () => {
     const cardsCount = localStorage.getItem('cardsCount');
     if (cardsCount % 2 === 0){
+        updateCardsCount(cardsCount);
         window.location.href = '/upload'
     }else{
         errorMessage.style.opacity = '1';
     }
 });
+
+function updateCardsCount(cardsCount){
+    localStorage.clear();
+    localStorage.setItem('cardsCount', cardsCount);
+}
