@@ -1,7 +1,7 @@
 let cards;
 
 const cardsAmount = localStorage.getItem('cardsCount');
-const defaultPicturesAmount = 8;
+const defaultPicturesAmount = 12;
 const customPicturesAmount = localStorage.getItem('picturesAmount') === null ? 0 : localStorage.getItem('picturesAmount');
 
 const gameState = {
@@ -24,7 +24,6 @@ let timeLeft = cardsAmount * 4;
 
 window.onload = function () {
     setupCards();
-    setupLayout();
     clearGameState();
     flipCards();
     document.getElementById("scoreValue").innerHTML = gameState.score;
@@ -50,12 +49,6 @@ function setupCards() {
     }
     cards = document.querySelectorAll(".memoryCard");
     addEventHandlers();
-}
-
-function setupLayout() {
-    if (cardsAmount % 4 !== 0){
-        document.querySelector(".board").style.gridTemplateColumns = 'repeat(2, max-content)';
-    }
 }
 
 function choosePictures() {
