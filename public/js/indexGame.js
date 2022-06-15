@@ -13,10 +13,10 @@ const gameState = {
 
 const controls = {
     flipKeyCode: 32,
-    upKeyCode: 1,
-    downKeyCode: 2,
-    leftKeyCode: 3,
-    rightKeyCode: 4
+    upKeyCode: 38,
+    downKeyCode: 40,
+    leftKeyCode: 37,
+    rightKeyCode: 39
 }
 
 let timer;
@@ -148,7 +148,8 @@ function checkForFlip(e) {
         this.classList.contains('flipped');
 }
 
-function flipCard(e) {
+function handleKeyDown(e) {
+    moveFocus.call(this, e)
     if (checkForFlip.call(this, e)) return;
     updateFlipped.call(this);
     let guess = false;
@@ -183,10 +184,25 @@ function defineWin() {
     }
 }
 
+function moveFocus(e) {
+    if (e.keyCode === controls.upKeyCode){
+        cards[Array.prototype.indexOf.call(cards, this) - 4].focus()
+    }
+    else if (e.keyCode === controls.downKeyCode){
+        cards[Array.prototype.indexOf.call(cards, this) + 4].focus()
+    }
+    else if (e.keyCode === controls.leftKeyCode){
+        cards[Array.prototype.indexOf.call(cards, this) - 1].focus()
+    }
+    else if (e.keyCode === controls.rightKeyCode){
+        cards[Array.prototype.indexOf.call(cards, this) + 1].focus()
+    }
+}
+
 function addEventHandlers() {
     cards.forEach(card => {
-        card.addEventListener('click', flipCard)
-        card.addEventListener('keydown', flipCard)
+        card.addEventListener('click', handleKeyDown)
+        card.addEventListener('keydown', handleKeyDown)
     });
 }
 
