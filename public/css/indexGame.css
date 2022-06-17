@@ -102,6 +102,13 @@ button {
     font-weight: bold;
 }
 
+#backButton {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    width: 100px;
+}
+
 .gameProgress{
     display: flex;
     flex-direction: row;
@@ -164,11 +171,43 @@ button {
     transform: rotateY(180deg);
 }
 
-.uploadFiles .form-group{padding:1em;margin:1em}
-.uploadFiles input[type=file]{outline:0;opacity:0;pointer-events:none;user-select:none}
-.uploadFiles .label{width:170px; height:170px; border:2px dashed white;border-radius:5px;display:block;padding:1.2em;transition:border 300ms ease;cursor:pointer;text-align:center}
-.uploadFiles .label i{display:block;font-size:42px;padding-bottom:16px}
-.uploadFiles .label i,.example-1 .label .title{color:white;transition:200ms color;}
-.uploadFiles .title {font-family: "Comic Shanns", cursive; font-size: 20px}
-.uploadFiles .label:hover{border:2px solid grey}
-.uploadFiles .label:hover i,.example-1 .label:hover, .title:hover{color:grey}
+.uploadFiles .form-group {
+    padding:1em;
+    margin:1em
+}
+.uploadFiles input[type=file] {
+    outline:0;
+    opacity:0;
+    pointer-events:none;
+    user-select:none
+}
+.uploadFiles .label {
+    width:170px;
+    height:170px;
+    border:2px dashed white;
+    border-radius:5px;
+    display:block;
+    padding:1.2em;
+    transition:border 300ms ease;
+    cursor:pointer;
+    text-align:center
+}
+.uploadFiles .label i {
+    display:block;
+    font-size:42px;
+    padding-bottom:16px
+}
+.uploadFiles .label i,.example-1 .label .title {
+    color:white;
+    transition:200ms color;
+}
+.uploadFiles .title {
+    font-family: "Comic Shanns", cursive;
+    font-size: 20px
+}
+.uploadFiles .label:hover {
+    border:2px solid grey
+}
+.uploadFiles .label:hover i,.example-1 .label:hover, .title:hover {
+    color:grey
+}

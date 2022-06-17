@@ -25,3 +25,5 @@ function updateCardsCount(cardsCount){
     localStorage.clear();
     localStorage.setItem('cardsCount', cardsCount);
 }
+
+document.querySelector("#backButton").addEventListener("click", () => {window.location.href = '/'});

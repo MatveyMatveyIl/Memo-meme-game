@@ -1,3 +1,5 @@
+document.querySelector("#backButton").addEventListener("click", () => {window.location.href = '/mode'});
+
 let cards;
 
 const cardsAmount = localStorage.getItem('cardsCount');
