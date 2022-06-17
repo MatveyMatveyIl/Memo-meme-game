@@ -14,7 +14,7 @@
         <label>за </label><label id="finishMoves"></label><label id="moves"> ходов</label><br>
         <script>const moves = localStorage.getItem('moves');
             document.getElementById('finishMoves').innerHTML = moves;
-            if (moves % 10 === 1){
+            if (moves % 10 === 1 && moves != 11){
                 document.getElementById('moves').innerHTML = 'ход';
             } else if (moves % 10 === 2 || moves % 10 === 3 || moves % 10 === 4){
                 document.getElementById('moves').innerHTML = 'хода';
