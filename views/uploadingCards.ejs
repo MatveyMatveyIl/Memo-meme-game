@@ -6,21 +6,57 @@
     <link rel="stylesheet" href="css/indexGame.css">
 </head>
 <body>
+<button id="backButton">Назад</button>
 <div class="menu">
-    <label id="uploadMessage" class="formField">Загрузите изображения для карт</label>
+    <div class="help">
+        <span>
+               <label id="uploadMessage" class="formField">Загрузите изображения для карт</label>
+            <button class="question"><b>&#63;</b></button>
+        </span>
+        <div class="popup">
+            <p>
+                Загрузите любое количество изображений в разрешении .jpg .jpeg или .png.
+            </p>
+            <p>
+                Вами выбрана колада из <label id="cardsCountLabel">x</label> карт.
+            </p>
+            <ul>
+                <li>
+                    Если вы загрузите <label id="cardsToUploadLabel">x</label>, то они все окажутся в колоде (по 2 карты с каждым изображением).
+                </li>
+                <li>
+                    Если меньше - оставшиеся карты будут заполнены изображениями из базового набора карт.
+                </li>
+                <li>
+                    Если больше - для карт будут случайно выбраны <label id="cardsToUploadLabel1">x</label> из загруженных вами .
+                </li>
+            </ul>
+        </div>
+    </div>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <div class="uploadFiles">
+    <div class="uploadFilesForm">
         <div class="form-group">
             <label class="label">
                 <i class="material-icons">attach_file</i>
-                <span class="title">Добавить файл</span>
+                <span class="title">Добавить изображения</span>
                 <input type="file" name="images" id="images" class="formField" accept=".jpg, .jpeg, .png" multiple>
             </label>
         </div>
     </div>
-
     <button id="gameStartButton" class="formField">Сохранить и начать игру</button>
 </div>
+<script>
+    const cardsCount = localStorage.getItem('cardsCount');
+    document.querySelector("#cardsCountLabel").innerHTML = cardsCount;
+    const cardsToUploadCount = cardsCount / 2;
+    if (cardsCount == 8){
+        document.querySelector("#cardsToUploadLabel").innerHTML = `${cardsToUploadCount} изображения`;
+        document.querySelector("#cardsToUploadLabel1").innerHTML = `${cardsToUploadCount} изображения`;
+    } else {
+        document.querySelector("#cardsToUploadLabel").innerHTML = `${cardsToUploadCount} изображений`;
+        document.querySelector("#cardsToUploadLabel1").innerHTML = `${cardsToUploadCount} изображений`;
+    }
+</script>
 <script src="js/uploadCards.js"></script>
 </body>
 </html>

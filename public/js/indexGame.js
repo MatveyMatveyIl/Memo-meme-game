@@ -84,7 +84,7 @@ function shuffle(array) {
 function createCard(pictures, index) {
     let card = document.createElement("div");
     card.className = "memoryCard";
-    card.tabIndex = "0";
+    card.tabIndex = index;
 
     let openCard = setCardImage("openedCardImg", "open", pictures[index]);
     let closedCard = setCardImage("closedCardImg", "closed", "images/closed.jpg");

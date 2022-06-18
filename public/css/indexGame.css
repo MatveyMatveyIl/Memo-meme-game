@@ -5,14 +5,24 @@
 html {
     height: 100%;
 }
+
+body {
+    --background-grey: #2f2f32;
+    --elements-color: white;
+    --error-color: crimson;
+    --hover-grey: #747478;
+    --darker-grey: #262626;
+}
+
 body {
     width: 99%;
     height: 99%;
-    background: #2f2f32;
+    background: var(--background-grey);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 }
 
 .menu{
@@ -22,8 +32,8 @@ body {
     font-family: "Comic Shanns", cursive;
 }
 
-.menu h1, .menu p, .menu label {
-    color: white;
+.menu h1, .menu p, .menu label, .menu ul {
+    color: var(--elements-color);
     font-family: "Comic Shanns", cursive;
 }
 
@@ -31,7 +41,7 @@ body {
     font-size: 70px;
 }
 
-.menu p, .menu label {
+.menu p, .menu label, .menu ul {
     font-size: 21px;
 }
 
@@ -40,16 +50,16 @@ body {
 }
 .menu #errorMessage {
     opacity: 0;
-    background: crimson;
+    background: var(--error-color);
     width: 410px;
     text-align: center;
 }
 
 button {
-    background: white;
+    background: var(--elements-color);
     color: #2f2f32;
     border-radius: 5px;
-    border-color: white;
+    border-color: var(--elements-color);
     border-width: 0;
     padding: 7px;
     cursor: pointer;
@@ -73,13 +83,56 @@ button {
 .menu .formField {
     border-radius: 5px;
     border-width: 0;
-    border-color: #2f2f32;
+    border-color: var(--background-grey);
     padding: 7px;
     margin: 25px;
     width: 300px;
     font-size: 20px;
     font-family: "Comic Shanns", cursive;
     text-align: center;
+}
+
+#uploadMessage {
+    margin: 0px;
+}
+
+.help {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.help .question {
+    height: 30px;
+    width: 30px;
+    background: var(--elements-color);
+    font-size: 15px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0px;
+}
+
+.help .popup{
+    width: 560px;
+    border-radius: 5px;
+    height: 0px;
+    text-align: left;
+    overflow: hidden;
+    position: relative;
+    background: var(--hover-grey);
+    opacity: 0;
+    transition: 1s;
+    top: 10px;
+}
+
+.help .popup p, .help .popup ul, .help .popup label {
+    color: var(--darker-grey);
+    margin: 20px;
+}
+
+.help:hover .popup {
+    opacity: 1;
+    height: 420px;
 }
 
 .menu #cardsCount {
@@ -115,9 +168,9 @@ button {
     justify-content: space-around;
     gap: 20px;
     margin-bottom: 10px;
-    border: 2px solid white;
+    border: 3px solid var(--elements-color);
     border-radius: 5px;
-    color: white;
+    color: var(--elements-color);
     font-size: 20px;
     font-family: "Comic Shanns", cursive;
     width: 514px;
@@ -131,7 +184,7 @@ button {
     display: grid;
     grid-template-columns: repeat(4, max-content);
     grid-gap: 20px;
-    border: 2px solid white;
+    border: 3px solid var(--elements-color);
     border-radius: 5px;
     padding: 5px;
 }
@@ -142,14 +195,6 @@ button {
     height: 110px;
     cursor: pointer;
     border-radius: 5px;
-}
-
-.closedCardImg {
-    border: 1px solid white;
-}
-
-.openedCardImg {
-    border: 2px solid #262626;
 }
 
 .openedCardImg,
@@ -163,6 +208,18 @@ button {
     backface-visibility: hidden;
 }
 
+.closedCardImg {
+    border: 2px solid var(--elements-color);
+}
+
+.openedCardImg {
+    border: 3px solid var(--darker-grey);
+}
+
+.openedCardImg:hover, .closedCardImg:hover {
+    border: 3px solid var(--hover-grey);
+}
+
 .memoryCard.flipped .openedCardImg {
     transform: rotateY(0);
 }
@@ -171,20 +228,20 @@ button {
     transform: rotateY(180deg);
 }
 
-.uploadFiles .form-group {
+.uploadFilesForm .form-group {
     padding:1em;
     margin:1em
 }
-.uploadFiles input[type=file] {
+.uploadFilesForm input[type=file] {
     outline:0;
     opacity:0;
     pointer-events:none;
     user-select:none
 }
-.uploadFiles .label {
+.uploadFilesForm .label {
     width:170px;
     height:170px;
-    border:2px dashed white;
+    border:2px dashed var(--elements-color);
     border-radius:5px;
     display:block;
     padding:1.2em;
@@ -192,22 +249,22 @@ button {
     cursor:pointer;
     text-align:center
 }
-.uploadFiles .label i {
+.uploadFilesForm .label i {
     display:block;
     font-size:42px;
     padding-bottom:16px
 }
-.uploadFiles .label i,.example-1 .label .title {
-    color:white;
+.uploadFilesForm .label i,.example-1 .label .title {
+    color: var(--elements-color);
     transition:200ms color;
 }
-.uploadFiles .title {
+.uploadFilesForm .title {
     font-family: "Comic Shanns", cursive;
     font-size: 20px
 }
-.uploadFiles .label:hover {
-    border:2px solid grey
+.uploadFilesForm .label:hover {
+    border: 2px solid var(--hover-grey);
 }
-.uploadFiles .label:hover i,.example-1 .label:hover, .title:hover {
-    color:grey
+.uploadFilesForm .label:hover, .uploadFilesForm .label:hover i  {
+    color: var(--hover-grey);
 }
