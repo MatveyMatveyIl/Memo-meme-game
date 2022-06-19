@@ -97,11 +97,57 @@ button {
     margin: 0px;
 }
 
+.uploadFilesForm {
+    border: 3px dashed var(--background-grey);
+    border-radius: 5px;
+}
+
+.uploadFilesForm input[type=file] {
+    outline:0;
+    opacity:0;
+    pointer-events:none;
+    user-select:none
+}
+
+.uploadFilesForm .label {
+    width:170px;
+    height:170px;
+    border:3px dashed var(--elements-color);
+    border-radius:5px;
+    display:block;
+    padding:1.2em;
+    transition:border 300ms ease;
+    cursor:pointer;
+    text-align:center
+}
+
+.uploadFilesForm .label i {
+    display:block;
+    font-size:42px;
+    padding-bottom:16px
+}
+.uploadFilesForm .label i,.example-1 .label .title {
+    color: var(--elements-color);
+    transition:200ms color;
+}
+.uploadFilesForm .title {
+    font-family: var(--main-font);
+    font-size: 20px
+}
+.uploadFilesForm .label:hover {
+    border: 2px solid var(--hover-grey);
+}
+.uploadFilesForm .label:hover, .uploadFilesForm .label:hover i  {
+    color: var(--hover-grey);
+}
+
 .help {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 20px;
 }
+
 .help .question {
     height: 30px;
     width: 30px;
@@ -227,45 +273,4 @@ button {
 
 .memoryCard.flipped .closedCardImg {
     transform: rotateY(180deg);
-}
-
-.uploadFilesForm .form-group {
-    padding:1em;
-    margin:1em
-}
-.uploadFilesForm input[type=file] {
-    outline:0;
-    opacity:0;
-    pointer-events:none;
-    user-select:none
-}
-.uploadFilesForm .label {
-    width:170px;
-    height:170px;
-    border:2px dashed var(--elements-color);
-    border-radius:5px;
-    display:block;
-    padding:1.2em;
-    transition:border 300ms ease;
-    cursor:pointer;
-    text-align:center
-}
-.uploadFilesForm .label i {
-    display:block;
-    font-size:42px;
-    padding-bottom:16px
-}
-.uploadFilesForm .label i,.example-1 .label .title {
-    color: var(--elements-color);
-    transition:200ms color;
-}
-.uploadFilesForm .title {
-    font-family: var(--main-font);
-    font-size: 20px
-}
-.uploadFilesForm .label:hover {
-    border: 2px solid var(--hover-grey);
-}
-.uploadFilesForm .label:hover, .uploadFilesForm .label:hover i  {
-    color: var(--hover-grey);
 }
