@@ -260,6 +260,10 @@ button {
     border-radius: 5px;
 }
 
+.memoryCard:hover {
+    border: 2px solid var(--elements-color);
+}
+
 .openedCardImg,
 .closedCardImg {
     padding: 2px;
@@ -277,10 +281,6 @@ button {
 
 .openedCardImg {
     border: 3px solid var(--darker-grey);
-}
-
-.openedCardImg:hover, .closedCardImg:hover {
-    border: 3px solid var(--hover-grey);
 }
 
 .memoryCard.flipped .openedCardImg {
