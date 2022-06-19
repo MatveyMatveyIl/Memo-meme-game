@@ -60,5 +60,5 @@ document.querySelector("#gameStartButton").addEventListener("click", () => {
 });
 
 document.querySelector("#backButton").addEventListener("click", () => {
-    window.location.href = '/';
+    window.location.href = '/mode';
 });

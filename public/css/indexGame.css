@@ -184,6 +184,10 @@ button {
     margin: 20px;
 }
 
+.help .popup label {
+    margin: 0px;
+}
+
 #uploadHelp:hover .popup {
     opacity: 1;
     height: 400px;
