@@ -151,7 +151,7 @@ button {
 .help .question {
     height: 30px;
     width: 30px;
-    background: var(--elements-color);
+    background: var(--hover-grey);
     font-size: 15px;
     text-align: center;
     border-radius: 50%;
@@ -174,12 +174,19 @@ button {
 
 .help .popup p, .help .popup ul, .help .popup label {
     color: var(--darker-grey);
+    font-family: var(--main-font);
+    font-size: 20px;
     margin: 20px;
 }
 
-.help:hover .popup {
+#uploadHelp:hover .popup {
     opacity: 1;
-    height: 420px;
+    height: 400px;
+}
+
+#gameHelp:hover .popup {
+    opacity: 1;
+    height: 220px;
 }
 
 .menu #cardsCount {
