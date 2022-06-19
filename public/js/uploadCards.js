@@ -17,3 +17,5 @@ document.querySelector("input").addEventListener("change", function () {
 document.querySelector("#gameStartButton").addEventListener("click", () => {
     window.location.href = '/game';
 });
+
+document.querySelector("#backButton").addEventListener("click", () => {window.location.href = '/'});

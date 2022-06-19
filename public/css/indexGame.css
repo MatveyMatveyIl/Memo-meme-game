@@ -12,6 +12,7 @@ body {
     --error-color: crimson;
     --hover-grey: #747478;
     --darker-grey: #262626;
+    --main-font: "Comic Sans", cursive;
 }
 
 body {
@@ -29,12 +30,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "Comic Shanns", cursive;
+    font-family: var(--main-font);
 }
 
 .menu h1, .menu p, .menu label, .menu ul {
     color: var(--elements-color);
-    font-family: "Comic Shanns", cursive;
+    font-family: var(--main-font);
 }
 
 .menu h1 {
@@ -64,7 +65,7 @@ button {
     padding: 7px;
     cursor: pointer;
     width: 300px;
-    font-family: "Comic Shanns", cursive;
+    font-family: var(--main-font);
     font-size: 20px;
     margin: 25px;
 }
@@ -88,7 +89,7 @@ button {
     margin: 25px;
     width: 300px;
     font-size: 20px;
-    font-family: "Comic Shanns", cursive;
+    font-family: var(--main-font);
     text-align: center;
 }
 
@@ -172,7 +173,7 @@ button {
     border-radius: 5px;
     color: var(--elements-color);
     font-size: 20px;
-    font-family: "Comic Shanns", cursive;
+    font-family: var(--main-font);
     width: 514px;
 }
 
@@ -259,7 +260,7 @@ button {
     transition:200ms color;
 }
 .uploadFilesForm .title {
-    font-family: "Comic Shanns", cursive;
+    font-family: var(--main-font);
     font-size: 20px
 }
 .uploadFilesForm .label:hover {
