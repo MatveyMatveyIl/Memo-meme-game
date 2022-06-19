@@ -15,20 +15,20 @@
         </span>
         <div class="popup">
             <p>
-                Загрузите любое количество изображений в разрешении .jpg .jpeg или .png.
+                Вами выбрана колада из <label class="cardsCountLabel">x</label> карт.
             </p>
             <p>
-                Вами выбрана колада из <label id="cardsCountLabel">x</label> карт.
+                Загрузите любое количество изображений в разрешении .jpg .jpeg или .png
             </p>
             <ul>
                 <li>
-                    Если вы загрузите <label id="cardsToUploadLabel">x</label>, то они все окажутся в колоде (по 2 карты с каждым изображением).
+                    Если вы загрузите <label class="cardsToUploadLabel">x</label>, то они все окажутся в колоде (по 2 карты с каждым изображением).
                 </li>
                 <li>
                     Если меньше - оставшиеся карты будут заполнены изображениями из базового набора карт.
                 </li>
                 <li>
-                    Если больше - для карт будут случайно выбраны <label id="cardsToUploadLabel1">x</label> из загруженных вами .
+                    Если больше - для карт будут случайно выбраны <label class="cardsToUploadLabel">x</label> из загруженных вами .
                 </li>
             </ul>
         </div>
@@ -47,14 +47,12 @@
 </div>
 <script>
     const cardsCount = localStorage.getItem('cardsCount');
-    document.querySelector("#cardsCountLabel").innerHTML = cardsCount;
+    document.querySelectorAll(".cardsCountLabel").forEach(label => {label.innerHTML = cardsCount;});
     const cardsToUploadCount = cardsCount / 2;
-    if (cardsCount == 8){
-        document.querySelector("#cardsToUploadLabel").innerHTML = `${cardsToUploadCount} изображения`;
-        document.querySelector("#cardsToUploadLabel1").innerHTML = `${cardsToUploadCount} изображения`;
+    if (cardsToUploadCount == 4){
+        document.querySelectorAll(".cardsToUploadLabel").forEach(label => {label.innerHTML = `${cardsToUploadCount} изображения`;});
     } else {
-        document.querySelector("#cardsToUploadLabel").innerHTML = `${cardsToUploadCount} изображений`;
-        document.querySelector("#cardsToUploadLabel1").innerHTML = `${cardsToUploadCount} изображений`;
+        document.querySelectorAll(".cardsToUploadLabel").forEach(label => {label.innerHTML = `${cardsToUploadCount} изображений`;});
     }
 </script>
 <script src="js/uploadCards.js"></script>
