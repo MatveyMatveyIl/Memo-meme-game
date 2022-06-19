@@ -1,6 +1,8 @@
 const dropArea = document.querySelector('.uploadFilesForm');
 const input = document.querySelector('input');
 
+input.accept =  ".png, .jpg, .jpeg";
+
 input.addEventListener("change", function () {
     uploadImages(this.files)
 });
