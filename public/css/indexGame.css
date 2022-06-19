@@ -6,13 +6,18 @@ html {
     height: 100%;
 }
 
+@font-face {
+    font-family: "comicSansRegular";
+    src: url("../fonts/comic.ttf");
+}
+
 body {
     --background-grey: #2f2f32;
     --elements-color: white;
     --error-color: crimson;
     --hover-grey: #747478;
     --darker-grey: #262626;
-    --main-font: "Comic Sans MS", cursive;
+    --main-font: "comicSansRegular";
 }
 
 body {
@@ -43,7 +48,7 @@ body {
 }
 
 .menu p, .menu label, .menu ul {
-    font-size: 21px;
+    font-size: 20px;
 }
 
 .menu label {
